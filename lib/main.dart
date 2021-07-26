@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meal_app/screens/categories_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -33,9 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: Center(
-        child: Text("first commit"),
-      ),
+      body: CategoriesScreen(),
     );
   }
 }
