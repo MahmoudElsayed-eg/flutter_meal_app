@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         accentColor: Colors.amber,
       ),
       home: CategoriesScreen(),
-      routes: {"meals_screen" : (_) => MealScreen(),},
+      routes: {MealScreen.routeName : (_) => MealScreen(),},
     );
   }
 }

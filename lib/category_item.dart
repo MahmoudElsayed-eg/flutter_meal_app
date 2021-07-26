@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_meal_app/models/category.dart';
+import 'package:flutter_meal_app/screens/meals_screen.dart';
 
 class CategoryItem extends StatelessWidget {
   final Category category;
@@ -8,7 +9,7 @@ class CategoryItem extends StatelessWidget {
   const CategoryItem({Key? key, required this.category}) : super(key: key);
 
   void selectCategory(BuildContext context) {
-    Navigator.of(context).pushNamed("meals_screen",
+    Navigator.of(context).pushNamed(MealScreen.routeName,
         arguments: {"id": category.id, "title": category.title});
   }
 

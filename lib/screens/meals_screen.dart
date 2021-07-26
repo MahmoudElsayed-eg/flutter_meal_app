@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 class MealScreen extends StatelessWidget {
   const MealScreen({Key? key}) : super(key: key);
 
+  static const routeName = "/meals-screen";
+
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as Map<String,String>;
