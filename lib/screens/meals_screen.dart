@@ -11,10 +11,9 @@ class MealScreen extends StatelessWidget {
     //final String id = args["id"]!;
     final String title = args["title"]!;
     return Scaffold(
-      appBar: AppBar(title: Text(title),),
-        body: Center(
-            child: Container(
-      child: Text("haha"),
-    )));
+      appBar: AppBar(title: Text(title),),);
+    //     body: ListView.builder(itemBuilder: (ctx,index) {
+    //       return MealItem()
+    // } ,itemCount: ,);
   }
 }
