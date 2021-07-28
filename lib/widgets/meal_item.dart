@@ -8,15 +8,15 @@ class MealItem extends StatelessWidget {
   const MealItem({Key? key, required this.meal}) : super(key: key);
   final Meal meal;
 
+  void navigateToDetails(BuildContext context) {
+    Navigator.of(context)
+        .pushNamed(MealDetailScreen.routeName, arguments: meal);
+  }
+
   @override
   Widget build(BuildContext context) {
-    void navigateToDetails() {
-      Navigator.of(context)
-          .pushNamed(MealDetailScreen.routeName, arguments: {"meal": meal});
-    }
-
     return InkWell(
-      onTap: navigateToDetails,
+      onTap: () => navigateToDetails(context),
       child: Card(
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(15)),
         elevation: 4,
@@ -70,7 +70,8 @@ class MealItem extends StatelessWidget {
                   RowItemIconText(
                       icon: Icons.work_outline_outlined,
                       text: meal.complexityText),
-                  RowItemIconText(icon: Icons.attach_money, text: meal.affordabilityText)
+                  RowItemIconText(
+                      icon: Icons.attach_money, text: meal.affordabilityText)
                 ],
               ),
             )
