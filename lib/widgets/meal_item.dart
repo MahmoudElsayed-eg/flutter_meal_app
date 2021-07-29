@@ -5,12 +5,18 @@ import 'package:flutter_meal_app/screens/meal_detail_screen.dart';
 import 'package:flutter_meal_app/widgets/row_with_icon_text.dart';
 
 class MealItem extends StatelessWidget {
-  const MealItem({Key? key, required this.meal}) : super(key: key);
+  const MealItem({Key? key, required this.meal,required this.function}) : super(key: key);
   final Meal meal;
+  final Function function;
 
   void navigateToDetails(BuildContext context) {
     Navigator.of(context)
-        .pushNamed(MealDetailScreen.routeName, arguments: meal);
+        .pushNamed(MealDetailScreen.routeName, arguments: meal)
+        .then((value) {
+      if (value != null) {
+        function(value);
+      }
+    });
   }
 
   @override
