@@ -36,7 +36,6 @@ class _TabsScreenState extends State<TabsScreen> {
 
 class BottomTabScreen extends StatefulWidget {
   const BottomTabScreen({Key? key}) : super(key: key);
-
   @override
   _BottomTabScreenState createState() => _BottomTabScreenState();
 }
