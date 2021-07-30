@@ -48,8 +48,8 @@ class _MealScreenState extends State<MealScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(title: Text(title),),
-        body: ListView.builder(itemBuilder: (ctx, index) {
-          return MealItem(meal: mealsList[index],function: _deleteMeal,);
+        body: widget.list.length==0? Center(child: const Text("No meals found!"),) :ListView.builder(itemBuilder: (ctx, index) {
+          return MealItem(meal: mealsList[index]);
         }, itemCount: mealsList.length,));
   }
 }

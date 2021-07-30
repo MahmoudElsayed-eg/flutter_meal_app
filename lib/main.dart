@@ -24,6 +24,7 @@ class _MyAppState extends State<MyApp> {
   };
 
   List<Meal> _meals = DUMMY_MEALS;
+  List<Meal> _favoriteMeals = [];
 
   void _setFilters(Map<String, bool> filters) {
     setState(() {
@@ -46,6 +47,20 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  void _setFavorite(Meal meal,bool value) {
+    setState(() {
+      if(value) {
+        _favoriteMeals.add(meal);
+      }else {
+        _favoriteMeals.remove(meal);
+      }
+    });
+  }
+
+  bool _isFavorite(Meal meal) {
+    return _favoriteMeals.contains(meal);
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -63,7 +78,7 @@ class _MyAppState extends State<MyApp> {
                 fontWeight: FontWeight.bold)),
         accentColor: Colors.amber,
       ),
-      home: BottomTabScreen(),
+      home: BottomTabScreen(favorite: _favoriteMeals,),
       routes: {
         FilterScreen.routeName: (_) => FilterScreen(
               function: _setFilters,
@@ -72,7 +87,7 @@ class _MyAppState extends State<MyApp> {
         MealScreen.routeName: (_) => MealScreen(
               list: _meals,
             ),
-        MealDetailScreen.routeName: (_) => MealDetailScreen()
+        MealDetailScreen.routeName: (_) => MealDetailScreen(favoriteFunction: _isFavorite,function: _setFavorite,)
       },
     );
   }

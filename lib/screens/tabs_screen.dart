@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_meal_app/models/meal.dart';
 import 'package:flutter_meal_app/screens/categories_screen.dart';
 import 'package:flutter_meal_app/screens/favorites_screen.dart';
 import 'package:flutter_meal_app/widgets/main_drawer.dart';
@@ -29,20 +30,27 @@ class _TabsScreenState extends State<TabsScreen> {
               )
             ]),
           ),
-          body: TabBarView(children: [CategoriesScreen(), FavoritesScreen()]),
+          body: TabBarView(children: [CategoriesScreen(), FavoritesScreen(favorite: [],)]),
         ));
   }
 }
 
 class BottomTabScreen extends StatefulWidget {
-  const BottomTabScreen({Key? key}) : super(key: key);
+  const BottomTabScreen({Key? key,required this.favorite}) : super(key: key);
+  final List<Meal> favorite;
   @override
   _BottomTabScreenState createState() => _BottomTabScreenState();
 }
 
 class _BottomTabScreenState extends State<BottomTabScreen> {
-  final List<Widget> _pages = [CategoriesScreen(), FavoritesScreen()];
+  late List<Widget> _pages;
   final List<String> _pagesTitle = ["Categories","Your Favorites"];
+
+  @override
+  void initState() {
+    _pages = [CategoriesScreen(), FavoritesScreen(favorite: widget.favorite)];
+    super.initState();
+  }
 
   int _selectedPageIndex = 0;
 
